@@ -715,4 +715,4 @@ For questions, suggestions, or feedback about this curriculum, please contact th
 ---
 
 **Last Updated:** January 2025  
-**Maintained by:** WellSpan Training Team
+**Maintained by:** Cordea Training Team
