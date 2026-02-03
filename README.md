@@ -610,6 +610,11 @@ This comprehensive AWS Security Training Curriculum is designed to provide WellS
 - [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 
+### Scripts (This Repo)
+- **[scripts/](scripts/)** – PowerShell and Python scripts for AWS security best practices:
+  - **PowerShell:** IAM audit, S3 security report, monitoring status (CloudTrail, GuardDuty), root account check
+  - **Python:** Same checks using boto3; see `scripts/python/README.md` and `scripts/python/requirements.txt`
+
 ### Tools and Utilities
 - [AWS CLI](https://aws.amazon.com/cli/)
 - [AWS CloudShell](https://aws.amazon.com/cloudshell/)

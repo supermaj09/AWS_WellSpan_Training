@@ -1,0 +1,3 @@
+# AWS Security scripts - WellSpan AWS Security Training
+# Install: pip install -r requirements.txt
+boto3>=1.28.0
