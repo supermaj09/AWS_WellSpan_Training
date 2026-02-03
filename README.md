@@ -21,7 +21,8 @@ This comprehensive AWS Security Training Curriculum is designed to provide WellS
 7. [Module 7: Security Best Practices and Hardening](#module-7-security-best-practices-and-hardening)
 8. [Module 8: Hands-On Labs and Projects](#module-8-hands-on-labs-and-projects)
 9. [Module 9: AWS Security Certifications](#module-9-aws-security-certifications)
-10. [Resources and References](#resources-and-references)
+10. [Troubleshooting AWS Security Issues](#troubleshooting-aws-security-issues)
+11. [Resources and References](#resources-and-references)
 
 ---
 
@@ -589,6 +590,41 @@ This comprehensive AWS Security Training Curriculum is designed to provide WellS
 - AWS Certified SysOps Administrator
 - AWS Certified DevOps Engineer
 - CISSP (for broader security knowledge)
+
+---
+
+## Troubleshooting AWS Security Issues
+
+When you encounter a security finding, access problem, or misconfiguration in AWS, use a consistent process to diagnose and resolve it.
+
+### 1. Identify the source of the finding
+- **Security Hub / GuardDuty / Inspector** – Note the finding type, severity, resource ID, and region. Use the console link to the finding for full details and recommended actions.
+- **AWS Config** – Check which rule failed and whether it’s a configuration or compliance issue. Review the resource configuration and the rule’s expected parameters.
+- **CloudTrail** – For “who did what” or access denied: search by event name, user/role, resource, or time. Use **Event history** or **Lake** (if enabled) and filter by error code (e.g. `AccessDenied`).
+
+### 2. Common issue areas and where to look
+
+| Issue | Where to look | Quick actions |
+|-------|----------------|----------------|
+| **Access denied (IAM)** | IAM → Users/Roles → Permissions; CloudTrail (event that failed) | Check policy conditions, resource ARNs, and if MFA or IP is required. Use [IAM Policy Simulator](https://policysim.aws.amazon.com/). |
+| **S3 bucket public or unencrypted** | S3 → Bucket → Permissions / Properties | Enable Block Public Access; turn on default encryption; run `scripts/python/s3_security_report.py` or `scripts/powershell/Get-S3SecurityReport.ps1`. |
+| **Missing or incomplete logging** | CloudTrail (trails per region), S3 bucket for logs | Ensure at least one trail per region, log file validation on, and bucket access logged. |
+| **GuardDuty / Security Hub finding** | GuardDuty → Findings; Security Hub → Findings | Open the finding, follow “Remediation” or “Recommendation”; contain affected resource if needed, then fix root cause. |
+| **Compliance / Config rule failure** | AWS Config → Rules → Compliance; Config → Resources | Fix the resource configuration to match the rule, or update the rule if the exception is approved. |
+| **Suspicious API or network activity** | GuardDuty findings, VPC Flow Logs, CloudTrail | Correlate by time and resource; isolate instance or revoke credentials; rotate keys if compromised. |
+
+### 3. Use the repo scripts for quick checks
+- **IAM:** `scripts/python/iam_security_audit.py` or `scripts/powershell/Get-IAMSecurityAudit.ps1` – users without MFA, inline policies, access keys.
+- **S3:** `scripts/python/s3_security_report.py` or `scripts/powershell/Get-S3SecurityReport.ps1` – encryption, versioning, public access.
+- **Monitoring:** `scripts/python/security_monitoring_status.py` or `scripts/powershell/Get-SecurityMonitoringStatus.ps1` – CloudTrail/GuardDuty status by region.
+- **Root account:** `scripts/python/root_account_check.py` or `scripts/powershell/Get-RootAccountSecurity.ps1` – root MFA and access keys.
+
+### 4. Escalation and documentation
+- Document the finding, affected resources, and steps taken in your incident or change tracking system.
+- Escalate to your security or cloud team when: the finding is high/critical, you suspect compromise, or remediation requires cross-account or organizational changes.
+- For AWS-side issues (e.g. service errors, unclear recommendations): use [AWS Support](https://console.aws.amazon.com/support/) (if available) or [AWS re:Post](https://repost.aws/) Security.
+
+For a longer, step-by-step guide and more scenarios, see **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**.
 
 ---
 
