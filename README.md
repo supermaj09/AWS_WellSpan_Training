@@ -8,6 +8,8 @@ This comprehensive AWS Security Training Curriculum is designed to provide WellS
 **Duration:** 8-12 weeks (self-paced)  
 **Prerequisites:** Basic understanding of cloud computing and AWS fundamentals
 
+**Short on time?** See **[TRAINING_PLAN_4_WEEKS.md](TRAINING_PLAN_4_WEEKS.md)** for a month-long plan at **2–4 hours per week** (reading + one assignment/lab per week).
+
 ---
 
 ## 📚 Table of Contents
