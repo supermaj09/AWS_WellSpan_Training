@@ -130,5 +130,5 @@ A **month-long plan** for [AWS_WellSpan_Training](https://github.com/supermaj09/
 
 ---
 
-**Last updated:** February 2025  
+**Last updated:** February 2026  
 **Repo:** [supermaj09/AWS_WellSpan_Training](https://github.com/supermaj09/AWS_WellSpan_Training)
