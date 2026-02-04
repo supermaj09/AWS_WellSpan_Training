@@ -757,5 +757,5 @@ For questions, suggestions, or feedback about this curriculum, please contact th
 
 ---
 
-**Last Updated:** January 2025  
+**Last Updated:** January 2026  
 **Maintained by:** Cordea Training Team
